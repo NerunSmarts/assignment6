@@ -15,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 // I used Maven build tools to set up the project, so I guess I ripped some code from them?? It was built into my IDE.
+// also, this is the probably the hardest code to read that i've ever written. I am not sorry.
+// also also this is just a shitty version of SwitfUI. Please let me use that next time lol cause then I can build for my iPhone.
 
 public class App extends Application {
 
@@ -31,14 +33,21 @@ public class App extends Application {
         ComboBox<String> pizzaType = new ComboBox<>();
         pizzaType.getItems().addAll("Plain", "Seafood", "Vegetarian", "Bacon", "Hawaiian", "Uni's Electric Rainbow Signature Pizza");
 
+        // section below sets up h and v boxes for the layout
+
         VBox header = new VBox(10);
         HBox pizzaTypeContainer = new HBox(10);
+        HBox optionBox = new HBox(10);
+
+        // this bit manages the children of the h and v boxes 
+
         pizzaTypeContainer.getChildren().addAll(new Label("Pizza Type: "), pizzaType);
         pizzaTypeContainer.setAlignment(Pos.CENTER);
         header.setPadding(new Insets(20));
         header.getChildren().addAll(welcome, logo, pizzaTypeContainer);
         header.setAlignment(Pos.CENTER);
-        root.getChildren().add(header);
+
+        root.getChildren().add(header); // add the main vbox to the root
 
         Scene scene = new Scene(root, 640, 480);
 
