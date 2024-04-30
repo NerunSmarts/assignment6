@@ -6,12 +6,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nerunsmarts.PrimaryController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" fx:id="imageView">
+      <Label text="Welcome to PizzaLand!" fx:id="welcome"/>
+      <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" fx:id="imageView">
             <Image url="https://images.squarespace-cdn.com/content/v1/5d56a346839a3a000100fcda/1565961231827-2I2YZCLMEQQX6S69V8PN/pizzalandlogo.png"/>
       </ImageView>
+      <ComboBox fx:id="comboBox" promptText="Pizza Type">
+         <items>
+            <FXCollection fx:factory="observableArrayList">
+               <String fx:value="Plain"/>
+               <String fx:value="Seafood"/>
+            </FXCollection>
+         </items>
+      </ComboBox>
       <Label text="Primary View" />
       <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
    </children>
