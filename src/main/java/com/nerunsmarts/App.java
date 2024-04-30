@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -56,6 +58,12 @@ public class App extends Application {
         CheckBox clovers = new CheckBox("Clovers");
         CheckBox horseshoes = new CheckBox("Horseshoes");
         CheckBox redBalloons = new CheckBox("Red Balloons");
+        Label customerInfoLabel = new Label("Customer Information:");
+        Label commentsLabel = new Label("Comments:");
+        TextField firstNameTextField = new TextField();
+        TextField lastNameTextField = new TextField();
+        TextField commentsTextField = new TextField();
+        Button submit = new Button("Submit");
 
         // section below sets up h and v boxes for the layout
 
@@ -66,6 +74,9 @@ public class App extends Application {
         VBox pizzaToppingsBox1 = new VBox(10);
         VBox pizzaToppingsBox2 = new VBox(10);
         HBox optionsBox = new HBox();
+        GridPane customerInfoPane = new GridPane();
+        HBox firstName = new HBox(10);
+        HBox lastName = new HBox(10);
 
         // this bit manages the children of the h and v boxes 
 
@@ -76,7 +87,14 @@ public class App extends Application {
         options.add(pizzaToppingsLabel, 1, 0);
         pizzaSizeBox.getChildren().addAll(small, medium, large);
         pizzaTypeContainer.getChildren().addAll(new Label("Pizza Type: "), pizzaType);
-        header.getChildren().addAll(welcome, logo, pizzaTypeContainer, options, optionsBox);
+        firstName.getChildren().addAll(new Label("First Name: "), firstNameTextField);
+        lastName.getChildren().addAll(new Label("Last Name: "), lastNameTextField);
+        customerInfoPane.add(customerInfoLabel, 0, 0);
+        customerInfoPane.add(commentsLabel, 1, 0);
+        customerInfoPane.add(firstName, 0, 1);
+        customerInfoPane.add(lastName, 0, 2);
+        customerInfoPane.add(commentsTextField, 1, 1);
+        header.getChildren().addAll(welcome, logo, pizzaTypeContainer, options, optionsBox, customerInfoPane, submit);
 
         // this bit does alignment and padding
 
@@ -88,6 +106,8 @@ public class App extends Application {
         options.setPadding(new Insets(20));
         options.setHgap(20);
         options.getColumnConstraints().addAll(column1, column2);
+        customerInfoPane.getColumnConstraints().addAll(column1, column2);
+        customerInfoPane.setPadding(new Insets(10));
         pizzaSizeBox.setPadding(new Insets(0, 50, 0, 50));
         pizzaToppingsBox1.setPadding(new Insets(0, 50, 0, 50));
         pizzaToppingsBox2.setPadding(new Insets(0, 50, 0, 50));
