@@ -4,8 +4,11 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class PrimaryController {
+
+    private ImageView imageView;
 
     @FXML
     public void initialize() {
@@ -15,10 +18,15 @@ public class PrimaryController {
         } catch (Exception e) {
             System.out.println("Error! Image inaccesible!");
         }
+        if (logo == null) {
+            System.out.println("fuck");
+        }
+        imageView = new ImageView(logo);
+        imageView.setImage(logo);
         System.out.println("PrimaryController initialized");
     }
 
-    private void switchToSecondary() throws IOException {
+    public void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
 }
