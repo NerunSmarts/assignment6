@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 // I used Maven build tools to set up the project, so I guess I ripped some code from them?? It was built into my IDE.
 // also, this is the probably the hardest code to read that i've ever written. I am not sorry.
 // also also this is just a shitty version of SwitfUI. Please let me use that next time lol cause then I can build for my iPhone.
-// also also also i did this at 11:20 on Monday night and I guarantee I could get better formatting on literally any other graphics package. Or if I was allowed to have multiple screens and use my own layout.
+// also also also i did this at 11:20 on Monday night and I guarantee I could get better formatting on literally any other graphics package. Or if I was allowed to have multiple screens and use my own layout. I used to do web design.
 
 public class App extends Application {
 
