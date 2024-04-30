@@ -35,11 +35,15 @@ public class App extends Application {
 
         // set up assets
 
-        Image image = new Image("https://images.squarespace-cdn.com/content/v1/5d56a346839a3a000100fcda/1565961231827-2I2YZCLMEQQX6S69V8PN/pizzalandlogo.png");
         Label welcome = new Label("Welcome to PizzaLand!");
         welcome.setStyle("-fx-font-weight: bold; -fx-font-size: 30px;");
         welcome.setTextFill(Color.PURPLE);
-        ImageView logo = new ImageView(image);
+        ImageView logo = new ImageView();
+        try {
+            logo.setImage(new Image("https://images.squarespace-cdn.com/content/v1/5d56a346839a3a000100fcda/1565961231827-2I2YZCLMEQQX6S69V8PN/pizzalandlogo.png"));
+        } catch (Exception e) {
+            System.out.println("Error loading image, possibly no internet connection. (" + e.getMessage() + ")");
+        }
         logo.setFitWidth(150);
         logo.setPreserveRatio(true);
         StackPane root = new StackPane();
