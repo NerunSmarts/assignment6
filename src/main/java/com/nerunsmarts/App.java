@@ -58,7 +58,6 @@ public class App extends Application {
         small.setToggleGroup(pizzaSize);
         medium.setToggleGroup(pizzaSize);
         large.setToggleGroup(pizzaSize);
-        ToggleGroup pizzaToppings = new ToggleGroup();
         CheckBox rainbows = new CheckBox("Rainbows");
         CheckBox hearts = new CheckBox("Hearts");
         CheckBox stars = new CheckBox("Stars");
