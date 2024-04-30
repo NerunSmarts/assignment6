@@ -42,7 +42,7 @@ public class App extends Application {
         try {
             logo.setImage(new Image("https://images.squarespace-cdn.com/content/v1/5d56a346839a3a000100fcda/1565961231827-2I2YZCLMEQQX6S69V8PN/pizzalandlogo.png"));
         } catch (Exception e) {
-            System.out.println("Error loading image, possibly no internet connection. (" + e.getMessage() + ")");
+            System.out.println("Error loading image, possibly no internet connection. (" + e.getMessage() + ")"); //turned out to be unneccesary as the image just doesn't appear with no wifi lol
         }
         logo.setFitWidth(150);
         logo.setPreserveRatio(true);
