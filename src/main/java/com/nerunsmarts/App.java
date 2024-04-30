@@ -1,5 +1,7 @@
 package com.nerunsmarts;
 
+// holy shit this is a lot of imports
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -123,9 +125,19 @@ public class App extends Application {
         primaryStage.setTitle("PizzaLand!");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        // program logic (barely any lol)
+
+        submit.setOnAction(event -> {
+            System.out.println(firstNameTextField.getText() + " " + lastNameTextField.getText() + "\nordered a " + (getSelectedSizeToggle(pizzaSize)) + " " + pizzaType.getValue() + "\nwith toppings:\n" + (rainbows.isSelected() ? "Rainbows\n" : "") + (hearts.isSelected() ? "Hearts\n" : "") + (stars.isSelected() ? "Stars\n" : "") + (clovers.isSelected() ? "Clovers\n" : "") + (horseshoes.isSelected() ? "Horseshoes\n" : "") + (redBalloons.isSelected() ? "Red Balloons\n" : "") + "and comments:\n" + commentsTextField.getText());
+        });
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public String getSelectedSizeToggle(ToggleGroup group) {
+        return ((RadioButton) group.getSelectedToggle()).getText();
     }
 }
