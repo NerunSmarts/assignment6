@@ -2,6 +2,9 @@ package com.nerunsmarts;
 
 // holy shit this is a lot of imports
 
+import java.io.File;
+import java.io.FileWriter;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -68,9 +72,10 @@ public class App extends Application {
         Label commentsLabel = new Label("Comments:");
         TextField firstNameTextField = new TextField();
         TextField lastNameTextField = new TextField();
-        TextField commentsTextField = new TextField();
+        TextArea commentsTextField = new TextArea();
         Button submit = new Button("Submit");
-
+        Integer orderNumber = 1;
+       
         // section below sets up h and v boxes for the layout
 
         VBox header = new VBox(10);
@@ -99,7 +104,7 @@ public class App extends Application {
         customerInfoPane.add(commentsLabel, 1, 0);
         customerInfoPane.add(firstName, 0, 1);
         customerInfoPane.add(lastName, 0, 2);
-        customerInfoPane.add(commentsTextField, 1, 1);
+        customerInfoPane.add(commentsTextField, 1, 1, 1, 2);
         header.getChildren().addAll(welcome, logo, pizzaTypeContainer, options, optionsBox, customerInfoPane, submit);
 
         // this bit does alignment and padding
@@ -134,6 +139,16 @@ public class App extends Application {
 
         submit.setOnAction(event -> {
             System.out.println(firstNameTextField.getText() + " " + lastNameTextField.getText() + "\nordered a " + (getSelectedSizeToggle(pizzaSize)) + " " + pizzaType.getValue() + "\nwith toppings:\n" + (rainbows.isSelected() ? "Rainbows\n" : "") + (hearts.isSelected() ? "Hearts\n" : "") + (stars.isSelected() ? "Stars\n" : "") + (clovers.isSelected() ? "Clovers\n" : "") + (horseshoes.isSelected() ? "Horseshoes\n" : "") + (redBalloons.isSelected() ? "Red Balloons\n" : "") + "and comments:\n" + commentsTextField.getText());
+            
+            try {
+                FileWriter writer = new FileWriter(new File("order"+ orderNumber +".txt"));
+                writer.write(firstNameTextField.getText() + " " + lastNameTextField.getText() + "\nordered a " + (getSelectedSizeToggle(pizzaSize)) + " " + pizzaType.getValue() + "\nwith toppings:\n" + (rainbows.isSelected() ? "Rainbows\n" : "") + (hearts.isSelected() ? "Hearts\n" : "") + (stars.isSelected() ? "Stars\n" : "") + (clovers.isSelected() ? "Clovers\n" : "") + (horseshoes.isSelected() ? "Horseshoes\n" : "") + (redBalloons.isSelected() ? "Red Balloons\n" : "") + "and comments:\n" + commentsTextField.getText());
+                writer.close();
+                System.out.println("Order saved!");
+            } catch (Exception e) {
+                System.out.println("Error creating file. (" + e.getMessage() + ")");
+            }
+
         });
     }
 
